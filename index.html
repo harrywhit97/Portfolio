@@ -1,13 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>About Me</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harry Whittaker - CV</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            color: #2c3e50;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 5px;
+            margin-top: 20px;
+        }
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        h2 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+        .contact-info {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+            color: #555;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        .employment-item {
+            margin-bottom: 25px;
+            padding-left: 15px;
+            border-left: 4px solid #3498db;
+        }
+        .employment-item h3 {
+            margin-top: 0;
+            margin-bottom: 5px;
+            color: #3498db;
+            font-size: 1.4em;
+        }
+        .employment-item p {
+            margin: 0;
+            font-size: 0.95em;
+        }
+        .employment-item ul {
+            list-style-type: disc;
+            margin-top: 10px;
+            padding-left: 20px;
+        }
+        .employment-item ul li {
+            margin-bottom: 5px;
+        }
+        .education-item {
+            margin-bottom: 15px;
+        }
+        .education-item h3 {
+            margin-top: 0;
+            margin-bottom: 5px;
+            color: #3498db;
+        }
+        .profile p {
+            font-size: 1.1em;
+            text-align: justify;
+            color: #444;
+        }
+    </style>
 </head>
 <body>
-  <h1>About Me</h1>
-  <p>This is the about page of my CV website.</p>
-  <a href="index.html">← Back to Home</a>
+    <div class="container">
+        <header>
+            <h1>Harry Whittaker</h1>
+            <p class="contact-info">harrywhit97@gmail.com | 07720 391 731</p>
+        </header>
+
+        <section class="section profile">
+            <h2>Profile</h2>
+            <p>
+                Senior software engineer with 4.5 years of software engineering experience in the financial sector
+                (structured products and hard commodity derivatives).  Specializing in .Net and Azure
+                development with a strong focus on implementing CI/CD, TDD and BDD to optimize development teams
+                throughput in a safe and efficient manner. 
+            </p>
+        </section>
+
+        <section class="section employment-history">
+            <h2>Employment History</h2>
+
+            <div class="employment-item">
+                <h3>Socius Technologies - Senior Software Engineer: February 2021 - Present</h3>
+                <ul>
+                    <li>Owned all aspects of an Azure hosted structured product asset management platform built in .Net MVC. </li>
+                    <li>Responsible for front and backend development, DevOps (Azure DevOps), security, Azure infrastructure management (ARM, bicep), QA, production support, client demos and feature specification </li>
+                    <li>Extracted dockerized services built in .Net 7 and hosted in Azure App Services from the monolithic platform</li>
+                    <li>Retroactively installed role based access control to simplify user permission checks, improve security and role/permission management</li>
+                    <li>Improved platform monitoring by integrating with Azure Application Insights</li>
+                    <li>Changed development process to enable a safer and more frequent release schedule to minimize downtime and improve developer experience improving release frequency by 4x and removing the need for weekend/late night releases</li>
+                    <li>Lead the migration from .Net Framework 5.2 to .Net 7 </li>
+                    <li>Extensively refactored the platform to make it white labeled and easy to create new instances for new clients</li>
+                    <li>Managed and developed new client integrations which involved the creation of SFTP servers to receive client file feeds and then the processing of the files</li>
+                    <li>Lead the product development team</li>
+                    <li>Improved performance of a critical reconciliation process reducing the run time from 2.5 hours to 4 minutes.  Utilizing functional programming principles and TPL data flow for parallelization </li>
+                    <li>Mentored junior engineers</li>
+                </ul>
+            </div>
+
+            <div class="employment-item">
+                <h3>Socius Technologies - Software Engineer: July 2020 - February 2021</h3>
+                <ul>
+                    <li>Worked a long side the CTO on an Asset management platform</li>
+                    <li>Created swagger and OData enabled API which sat between what previously was a heavily coupled front/backend to provide data to the UI</li>
+                    <li>Refactored to make the service layer testable and created unit test suite using Moq and Fluent Assertions</li>
+                    <li>Improved Azure Devops CI/CD pipelines by adding a static code analysis tool (Sonar Cloud)</li>
+                </ul>
+            </div>
+
+            <div class="employment-item">
+                <h3>Brady Plc (hard commodity derivatives software house) - Junior Software Engineer: Oct 2018 - July 2020 </h3>
+                <ul>
+                    <li>Created CI/CD pipeline using TeamCity and Octopus Deploy for a reduction of build time by 50%</li>
+                    <li>Took ownership of a MiFID reporting service.  Fixed bugs, performed maintenance, expanded unit testing suite </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section education">
+            <h2>Education</h2>
+            <div class="education-item">
+                <h3>Currently working towards Azure Certified Solutions Architect</h3>
+                <p>Azure Certified Developer Associate 2021 - present</p>
+            </div>
+            <div class="education-item">
+                <h3>Bachelor of IT Majoring in Computer Science - Queensland University of Technology 2015-2018 (Brisbane, Australia)</h3>
+                <ul>
+                    <li>Major in Computer Science - equivalent grade of 2:1</li>
+                </ul>
+            </div>
+        </section>
+    </div>
 </body>
 </html>
