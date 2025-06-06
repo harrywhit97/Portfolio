@@ -4,81 +4,162 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Harry Whittaker - CV</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary-color: #3498db; /* A modern blue */
+            --text-color: #333;
+            --secondary-text-color: #555;
+            --background-color: #f8f9fa;
+            --card-background: #ffffff;
+            --border-color: #e0e0e0;
+            --shadow-light: rgba(0, 0, 0, 0.08);
+            --shadow-hover: rgba(0, 0, 0, 0.15);
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Roboto', sans-serif;
             line-height: 1.6;
-            margin: 20px;
-            background-color: #f4f4f4;
-            color: #333;
+            margin: 0;
+            padding: 20px;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
         }
+
         .container {
+            width: 100%;
             max-width: 900px;
-            margin: auto;
-            background: #fff;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            background: var(--card-background);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px var(--shadow-light);
+            transition: box-shadow 0.3s ease-in-out;
         }
-        h1, h2 {
-            color: #2c3e50;
-            border-bottom: 2px solid #eee;
-            padding-bottom: 5px;
-            margin-top: 20px;
+
+        .container:hover {
+            box-shadow: 0 8px 25px var(--shadow-hover);
         }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
         h1 {
-            text-align: center;
-            font-size: 2.5em;
-            margin-bottom: 10px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.8em;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+            font-weight: 700;
         }
-        h2 {
-            font-size: 1.8em;
-            margin-bottom: 15px;
-        }
+
         .contact-info {
-            text-align: center;
-            margin-bottom: 30px;
             font-size: 1.1em;
-            color: #555;
+            color: var(--secondary-text-color);
+            margin-top: 10px;
         }
+
         .section {
-            margin-bottom: 30px;
+            margin-bottom: 35px;
+            padding-top: 15px;
         }
-        .employment-item {
+
+        h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8em;
+            color: var(--text-color);
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 8px;
             margin-bottom: 25px;
-            padding-left: 15px;
-            border-left: 4px solid #3498db;
+            font-weight: 600;
         }
-        .employment-item h3 {
+
+        .profile p {
+            font-size: 1.05em;
+            text-align: justify;
+            color: var(--secondary-text-color);
+            line-height: 1.7;
+        }
+
+        .employment-item, .education-item {
+            margin-bottom: 25px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .employment-item::before, .education-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 5px;
+            width: 8px;
+            height: 8px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            border: 2px solid var(--primary-color);
+            box-sizing: border-box;
+        }
+
+        .employment-item::after, .education-item::after {
+            content: '';
+            position: absolute;
+            left: 3px;
+            top: 15px;
+            bottom: -15px;
+            width: 2px;
+            background-color: var(--border-color);
+        }
+
+        .employment-item:last-child::after, .education-item:last-child::after {
+            display: none; /* Hide line for the last item */
+        }
+
+        .employment-item h3, .education-item h3 {
             margin-top: 0;
             margin-bottom: 5px;
-            color: #3498db;
-            font-size: 1.4em;
+            color: var(--primary-color);
+            font-size: 1.35em;
+            font-weight: 600;
         }
-        .employment-item p {
+
+        .employment-item p, .education-item p {
             margin: 0;
             font-size: 0.95em;
+            color: var(--secondary-text-color);
         }
+
         .employment-item ul {
-            list-style-type: disc;
+            list-style-type: none; /* Remove default bullet */
             margin-top: 10px;
-            padding-left: 20px;
+            padding-left: 0;
         }
+
         .employment-item ul li {
-            margin-bottom: 5px;
+            margin-bottom: 8px;
+            font-size: 0.98em;
+            color: var(--text-color);
+            position: relative;
+            padding-left: 20px; /* Space for custom bullet */
         }
-        .education-item {
-            margin-bottom: 15px;
+
+        .employment-item ul li::before {
+            content: '•'; /* Custom bullet point */
+            color: var(--primary-color);
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-size: 1.2em;
         }
-        .education-item h3 {
-            margin-top: 0;
-            margin-bottom: 5px;
-            color: #3498db;
-        }
-        .profile p {
-            font-size: 1.1em;
-            text-align: justify;
-            color: #444;
+
+        .education-item ul {
+            list-style-type: disc;
+            margin-top: 5px;
+            padding-left: 20px;
+            color: var(--secondary-text-color);
         }
     </style>
 </head>
@@ -93,9 +174,9 @@
             <h2>Profile</h2>
             <p>
                 Senior software engineer with 4.5 years of software engineering experience in the financial sector
-                (structured products and hard commodity derivatives).  Specializing in .Net and Azure
+                (structured products and hard commodity derivatives). Specializing in .Net and Azure
                 development with a strong focus on implementing CI/CD, TDD and BDD to optimize development teams
-                throughput in a safe and efficient manner. 
+                throughput in a safe and efficient manner.
             </p>
         </section>
 
@@ -105,17 +186,17 @@
             <div class="employment-item">
                 <h3>Socius Technologies - Senior Software Engineer: February 2021 - Present</h3>
                 <ul>
-                    <li>Owned all aspects of an Azure hosted structured product asset management platform built in .Net MVC. </li>
-                    <li>Responsible for front and backend development, DevOps (Azure DevOps), security, Azure infrastructure management (ARM, bicep), QA, production support, client demos and feature specification </li>
+                    <li>Owned all aspects of an Azure hosted structured product asset management platform built in .Net MVC.</li>
+                    <li>Responsible for front and backend development, DevOps (Azure DevOps), security, Azure infrastructure management (ARM, bicep), QA, production support, client demos and feature specification</li>
                     <li>Extracted dockerized services built in .Net 7 and hosted in Azure App Services from the monolithic platform</li>
                     <li>Retroactively installed role based access control to simplify user permission checks, improve security and role/permission management</li>
                     <li>Improved platform monitoring by integrating with Azure Application Insights</li>
                     <li>Changed development process to enable a safer and more frequent release schedule to minimize downtime and improve developer experience improving release frequency by 4x and removing the need for weekend/late night releases</li>
-                    <li>Lead the migration from .Net Framework 5.2 to .Net 7 </li>
+                    <li>Lead the migration from .Net Framework 5.2 to .Net 7</li>
                     <li>Extensively refactored the platform to make it white labeled and easy to create new instances for new clients</li>
                     <li>Managed and developed new client integrations which involved the creation of SFTP servers to receive client file feeds and then the processing of the files</li>
                     <li>Lead the product development team</li>
-                    <li>Improved performance of a critical reconciliation process reducing the run time from 2.5 hours to 4 minutes.  Utilizing functional programming principles and TPL data flow for parallelization </li>
+                    <li>Improved performance of a critical reconciliation process reducing the run time from 2.5 hours to 4 minutes. Utilizing functional programming principles and TPL data flow for parallelization</li>
                     <li>Mentored junior engineers</li>
                 </ul>
             </div>
@@ -123,7 +204,7 @@
             <div class="employment-item">
                 <h3>Socius Technologies - Software Engineer: July 2020 - February 2021</h3>
                 <ul>
-                    <li>Worked a long side the CTO on an Asset management platform</li>
+                    <li>Worked alongside the CTO on an Asset management platform</li>
                     <li>Created swagger and OData enabled API which sat between what previously was a heavily coupled front/backend to provide data to the UI</li>
                     <li>Refactored to make the service layer testable and created unit test suite using Moq and Fluent Assertions</li>
                     <li>Improved Azure Devops CI/CD pipelines by adding a static code analysis tool (Sonar Cloud)</li>
@@ -131,10 +212,10 @@
             </div>
 
             <div class="employment-item">
-                <h3>Brady Plc (hard commodity derivatives software house) - Junior Software Engineer: Oct 2018 - July 2020 </h3>
+                <h3>Brady Plc (hard commodity derivatives software house) - Junior Software Engineer: Oct 2018 - July 2020</h3>
                 <ul>
                     <li>Created CI/CD pipeline using TeamCity and Octopus Deploy for a reduction of build time by 50%</li>
-                    <li>Took ownership of a MiFID reporting service.  Fixed bugs, performed maintenance, expanded unit testing suite </li>
+                    <li>Took ownership of a MiFID reporting service. Fixed bugs, performed maintenance, expanded unit testing suite</li>
                 </ul>
             </div>
         </section>
