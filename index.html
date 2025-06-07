@@ -145,40 +145,6 @@
             height: fit-content;
         }
 
-        .profile-image {
-            width: 180px;
-            height: 180px;
-            border-radius: 24px;
-            margin: 0 auto 1.5rem;
-            display: block;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .profile-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-
-        .profile-image:hover img {
-            transform: scale(1.1);
-        }
-
-        .profile-image::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: var(--gradient);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .profile-image:hover::after {
-            opacity: 0.2;
-        }
-
         .social-links {
             display: flex;
             justify-content: center;
@@ -196,71 +162,6 @@
 
         .social-link:hover {
             color: var(--primary-color);
-            transform: translateY(-3px);
-        }
-
-        .download-cv {
-            display: block;
-            width: 100%;
-            padding: 1rem;
-            margin: 1.5rem 0;
-            background: var(--gradient);
-            color: white;
-            border: none;
-            border-radius: 12px;
-            font-weight: 600;
-            cursor: pointer;
-            text-align: center;
-            text-decoration: none;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .download-cv:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px var(--shadow-medium);
-        }
-
-        .contact-form {
-            margin-top: 3rem;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-
-        .form-input {
-            width: 100%;
-            padding: 0.8rem;
-            border: 2px solid var(--border-color);
-            border-radius: 8px;
-            background: var(--card-background);
-            color: var(--text-color);
-            transition: border-color 0.3s ease;
-        }
-
-        .form-input:focus {
-            outline: none;
-            border-color: var(--primary-color);
-        }
-
-        .submit-btn {
-            background: var(--gradient);
-            color: white;
-            border: none;
-            padding: 1rem 2rem;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-
-        .submit-btn:hover {
             transform: translateY(-3px);
         }
 
@@ -361,6 +262,8 @@
             <a href="#about" class="nav-link">About</a>
             <a href="#experience" class="nav-link">Experience</a>
             <a href="#skills" class="nav-link">Skills</a>
+            <a href="#education" class="nav-link">Education</a>
+            <a href="#certifications" class="nav-link">Certifications</a>
         </div>
         <button class="theme-toggle" aria-label="Toggle dark mode">
             <i class="fas fa-moon"></i>
@@ -369,37 +272,23 @@
 
     <div class="container">
         <aside class="sidebar">
-            <div class="profile-image">
-                <img src="https://github.com/harrywhit97.png" alt="Harry Whittaker">
-            </div>
-            
             <div class="social-links">
-                <a href="https://github.com/harrywhit97" target="_blank" class="social-link">
-                    <i class="fab fa-github"></i>
-                </a>
                 <a href="https://linkedin.com/in/harrywhit97" target="_blank" class="social-link">
                     <i class="fab fa-linkedin"></i>
                 </a>
-                <a href="mailto:harrywhit97@gmail.com" class="social-link">
-                    <i class="fas fa-envelope"></i>
-                </a>
             </div>
-
-            <a href="cv.pdf" download class="download-cv">
-                <i class="fas fa-download"></i> Download CV
-            </a>
 
             <div class="section" id="skills">
                 <h2>Skills</h2>
                 <div class="skills-list">
                     <div class="skill-item">.NET Core</div>
                     <div class="skill-item">Azure Cloud</div>
-                    <div class="skill-item">C#</div>
+                    <div class="skill-item">AWS</div>
                     <div class="skill-item">DevOps</div>
-                    <div class="skill-item">CI/CD</div>
                     <div class="skill-item">Docker</div>
                     <div class="skill-item">TDD</div>
                     <div class="skill-item">Microservices</div>
+                    <div class="skill-item">Functional Programming</div>
                 </div>
             </div>
         </aside>
@@ -407,20 +296,34 @@
         <main class="main-content">
             <section class="section" id="about">
                 <h1>Harry Whittaker</h1>
-                <p class="subtitle">Senior Software Engineer</p>
+                <p class="subtitle">Software Engineer</p>
                 <p class="bio">
-                    Senior software engineer with 4.5 years of experience in the financial sector, 
-                    specializing in structured products and hard commodity derivatives. Expert in .NET 
-                    and Azure development with a strong focus on implementing CI/CD, TDD, and BDD to 
-                    optimize development teams' throughput safely and efficiently.
+                    Software engineer with 7 years of experience specializing in .NET microservices and cloud architecture. 
+                    Currently building scalable payment processing systems at Checkout.com using AWS and .NET. Previously worked 
+                    in the financial sector focusing on structured products and hard commodity derivatives. Strong expertise in 
+                    cloud-native development, DevOps practices, and delivering high-performance financial solutions.
                 </p>
             </section>
 
             <section class="section" id="experience">
                 <h2>Experience</h2>
                 <div class="employment-item">
+                    <h3>Software Engineer</h3>
+                    <span class="duration">November 2023 - Present</span>
+                    <p class="company">Checkout.com</p>
+                    <ul>
+                        <li>Led the implementation of critical payment processing features handling transactions worth millions in daily volume</li>
+                        <li>Streamlined the continuous deployment pipeline, significantly improving team velocity and deployment efficiency</li>
+                        <li>Architected and implemented an engineering metrics system using Datadog, enhancing system observability and incident response times</li>
+                        <li>Collaborated with cross-functional teams to deliver high-impact features in an agile environment</li>
+                        <li>Contributed to technical design decisions and best practices for a microservices architecture processing thousands of transactions per minute</li>
+                        <li>Implemented robust monitoring and alerting systems using Datadog, achieving 99.999% service uptime</li>
+                    </ul>
+                </div>
+
+                <div class="employment-item">
                     <h3>Senior Software Engineer</h3>
-                    <span class="duration">February 2021 - Present</span>
+                    <span class="duration">February 2021 - November 2023</span>
                     <p class="company">Socius Technologies</p>
                     <ul>
                         <li>Led migration from .NET Framework 5.2 to .NET 7</li>
@@ -440,25 +343,38 @@
                         <li>Enhanced Azure DevOps pipelines</li>
                     </ul>
                 </div>
+
+                <div class="employment-item">
+                    <h3>Junior Software Engineer</h3>
+                    <span class="duration">October 2018 - July 2020</span>
+                    <p class="company">Brady Plc (hard commodity derivatives software house)</p>
+                    <ul>
+                        <li>Created CI/CD pipeline using TeamCity and Octopus Deploy for a reduction of build time by 50%</li>
+                        <li>Took ownership of a MiFID reporting service. Fixed bugs, performed maintenance, expanded unit testing suite</li>
+                    </ul>
+                </div>
             </section>
 
-            <section class="section" id="contact">
-                <h2>Contact Me</h2>
-                <form class="contact-form" action="https://formspree.io/f/your-form-id" method="POST">
-                    <div class="form-group">
-                        <label class="form-label" for="name">Name</label>
-                        <input type="text" id="name" name="name" class="form-input" required>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" for="email">Email</label>
-                        <input type="email" id="email" name="email" class="form-input" required>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" for="message">Message</label>
-                        <textarea id="message" name="message" class="form-input" rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="submit-btn">Send Message</button>
-                </form>
+            <section class="section" id="education">
+                <h2>Education</h2>
+                <div class="employment-item">
+                    <h3>Bachelor of IT Majoring in Computer Science</h3>
+                    <span class="duration">2015 - 2018</span>
+                    <p class="company">Queensland University of Technology (Brisbane, Australia)</p>
+                    <ul>
+                        <li>Major in Computer Science - equivalent grade of 2:1</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="section" id="certifications">
+                <h2>Certifications</h2>
+                <div class="employment-item">
+                    <ul>
+                        <li>Microsoft Azure Developer Associate (AZ-204)</li>
+                        <li>AWS Certified Cloud Practitioner</li>
+                    </ul>
+                </div>
             </section>
         </main>
     </div>
