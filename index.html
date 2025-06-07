@@ -3,236 +3,544 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Harry Whittaker - CV</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <title>Harry Whittaker | Senior Software Engineer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
-            --primary-color: #3498db; /* A modern blue */
-            --text-color: #333;
-            --secondary-text-color: #555;
-            --background-color: #f8f9fa;
+            --primary-color: #2dd4bf;
+            --secondary-color: #64748b;
+            --accent-color: #8b5cf6;
+            --text-color: #334155;
+            --background-color: #f8fafc;
             --card-background: #ffffff;
-            --border-color: #e0e0e0;
-            --shadow-light: rgba(0, 0, 0, 0.08);
-            --shadow-hover: rgba(0, 0, 0, 0.15);
+            --border-color: #e2e8f0;
+            --shadow-light: rgba(0, 0, 0, 0.05);
+            --shadow-medium: rgba(0, 0, 0, 0.1);
+            --gradient: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+        }
+
+        [data-theme="dark"] {
+            --primary-color: #5eead4;
+            --secondary-color: #94a3b8;
+            --accent-color: #a78bfa;
+            --text-color: #f1f5f9;
+            --background-color: #0f172a;
+            --card-background: #1e293b;
+            --border-color: #334155;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         body {
-            font-family: 'Roboto', sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 20px;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
             background-color: var(--background-color);
             color: var(--text-color);
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
             min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .nav-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transform: translateY(0);
+            transition: transform 0.3s ease;
+        }
+
+        .nav-hidden {
+            transform: translateY(-100%);
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background: var(--gradient);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text-color);
+            cursor: pointer;
+            font-size: 1.2rem;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            transform: rotate(45deg);
         }
 
         .container {
-            width: 100%;
-            max-width: 900px;
+            max-width: 1200px;
+            margin: 80px auto 0;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.8s forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .sidebar {
             background: var(--card-background);
-            padding: 40px;
+            padding: 2rem;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px var(--shadow-light);
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+        }
+
+        .profile-image {
+            width: 180px;
+            height: 180px;
+            border-radius: 24px;
+            margin: 0 auto 1.5rem;
+            display: block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .profile-image:hover img {
+            transform: scale(1.1);
+        }
+
+        .profile-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--gradient);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .profile-image:hover::after {
+            opacity: 0.2;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .social-link {
+            color: var(--text-color);
+            font-size: 1.5rem;
+            padding: 0.5rem;
             border-radius: 12px;
-            box-shadow: 0 4px 15px var(--shadow-light);
-            transition: box-shadow 0.3s ease-in-out;
+            transition: all 0.3s ease;
         }
 
-        .container:hover {
-            box-shadow: 0 8px 25px var(--shadow-hover);
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        h1 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 2.8em;
+        .social-link:hover {
             color: var(--primary-color);
-            margin-bottom: 5px;
-            font-weight: 700;
+            transform: translateY(-3px);
         }
 
-        .contact-info {
-            font-size: 1.1em;
-            color: var(--secondary-text-color);
-            margin-top: 10px;
+        .download-cv {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            background: var(--gradient);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .download-cv:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px var(--shadow-medium);
+        }
+
+        .contact-form {
+            margin-top: 3rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            background: var(--card-background);
+            color: var(--text-color);
+            transition: border-color 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .submit-btn {
+            background: var(--gradient);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+        }
+
+        .skill-item {
+            padding: 0.8rem;
+            border-radius: 12px;
+            background: var(--background-color);
+            margin-bottom: 0.5rem;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-item::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--gradient);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .skill-item:hover::before {
+            opacity: 1;
+        }
+
+        .skill-item:hover {
+            color: white;
+            transform: translateX(10px);
+        }
+
+        .main-content {
+            background: var(--card-background);
+            padding: 3rem;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px var(--shadow-light);
         }
 
         .section {
-            margin-bottom: 35px;
-            padding-top: 15px;
+            opacity: 0;
+            transform: translateY(20px);
         }
 
-        h2 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.8em;
-            color: var(--text-color);
-            border-bottom: 2px solid var(--primary-color);
-            padding-bottom: 8px;
-            margin-bottom: 25px;
-            font-weight: 600;
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.8s ease;
         }
 
-        .profile p {
-            font-size: 1.05em;
-            text-align: justify;
-            color: var(--secondary-text-color);
-            line-height: 1.7;
-        }
-
-        .employment-item, .education-item {
-            margin-bottom: 25px;
-            padding-left: 20px;
+        .employment-item {
+            padding: 2rem;
+            border-radius: 16px;
+            background: var(--card-background);
+            margin-bottom: 2rem;
             position: relative;
+            overflow: hidden;
         }
 
-        .employment-item::before, .education-item::before {
+        .employment-item::before {
             content: '';
-            position: absolute;
-            left: 0;
-            top: 5px;
-            width: 8px;
-            height: 8px;
-            background-color: var(--primary-color);
-            border-radius: 50%;
-            border: 2px solid var(--primary-color);
-            box-sizing: border-box;
-        }
-
-        .employment-item::after, .education-item::after {
-            content: '';
-            position: absolute;
-            left: 3px;
-            top: 15px;
-            bottom: -15px;
-            width: 2px;
-            background-color: var(--border-color);
-        }
-
-        .employment-item:last-child::after, .education-item:last-child::after {
-            display: none; /* Hide line for the last item */
-        }
-
-        .employment-item h3, .education-item h3 {
-            margin-top: 0;
-            margin-bottom: 5px;
-            color: var(--primary-color);
-            font-size: 1.35em;
-            font-weight: 600;
-        }
-
-        .employment-item p, .education-item p {
-            margin: 0;
-            font-size: 0.95em;
-            color: var(--secondary-text-color);
-        }
-
-        .employment-item ul {
-            list-style-type: none; /* Remove default bullet */
-            margin-top: 10px;
-            padding-left: 0;
-        }
-
-        .employment-item ul li {
-            margin-bottom: 8px;
-            font-size: 0.98em;
-            color: var(--text-color);
-            position: relative;
-            padding-left: 20px; /* Space for custom bullet */
-        }
-
-        .employment-item ul li::before {
-            content: '•'; /* Custom bullet point */
-            color: var(--primary-color);
             position: absolute;
             left: 0;
             top: 0;
-            font-size: 1.2em;
+            width: 4px;
+            height: 0;
+            background: var(--gradient);
+            transition: height 0.3s ease;
         }
 
-        .education-item ul {
-            list-style-type: disc;
-            margin-top: 5px;
-            padding-left: 20px;
-            color: var(--secondary-text-color);
+        .employment-item:hover::before {
+            height: 100%;
+        }
+
+        .employment-item:hover {
+            transform: translateX(10px);
+        }
+
+        @media (max-width: 900px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                position: relative;
+                top: 0;
+            }
+
+            .nav-links {
+                display: none;
+            }
         }
     </style>
 </head>
 <body>
+    <nav class="nav-bar">
+        <div class="logo">HW</div>
+        <div class="nav-links">
+            <a href="#about" class="nav-link">About</a>
+            <a href="#experience" class="nav-link">Experience</a>
+            <a href="#skills" class="nav-link">Skills</a>
+        </div>
+        <button class="theme-toggle" aria-label="Toggle dark mode">
+            <i class="fas fa-moon"></i>
+        </button>
+    </nav>
+
     <div class="container">
-        <header>
-            <h1>Harry Whittaker</h1>
-            <p class="contact-info">harrywhit97@gmail.com | 07720 391 731</p>
-        </header>
-
-        <section class="section profile">
-            <h2>Profile</h2>
-            <p>
-                Senior software engineer with 4.5 years of software engineering experience in the financial sector
-                (structured products and hard commodity derivatives). Specializing in .Net and Azure
-                development with a strong focus on implementing CI/CD, TDD and BDD to optimize development teams
-                throughput in a safe and efficient manner.
-            </p>
-        </section>
-
-        <section class="section employment-history">
-            <h2>Employment History</h2>
-
-            <div class="employment-item">
-                <h3>Socius Technologies - Senior Software Engineer: February 2021 - Present</h3>
-                <ul>
-                    <li>Owned all aspects of an Azure hosted structured product asset management platform built in .Net MVC.</li>
-                    <li>Responsible for front and backend development, DevOps (Azure DevOps), security, Azure infrastructure management (ARM, bicep), QA, production support, client demos and feature specification</li>
-                    <li>Extracted dockerized services built in .Net 7 and hosted in Azure App Services from the monolithic platform</li>
-                    <li>Retroactively installed role based access control to simplify user permission checks, improve security and role/permission management</li>
-                    <li>Improved platform monitoring by integrating with Azure Application Insights</li>
-                    <li>Changed development process to enable a safer and more frequent release schedule to minimize downtime and improve developer experience improving release frequency by 4x and removing the need for weekend/late night releases</li>
-                    <li>Lead the migration from .Net Framework 5.2 to .Net 7</li>
-                    <li>Extensively refactored the platform to make it white labeled and easy to create new instances for new clients</li>
-                    <li>Managed and developed new client integrations which involved the creation of SFTP servers to receive client file feeds and then the processing of the files</li>
-                    <li>Lead the product development team</li>
-                    <li>Improved performance of a critical reconciliation process reducing the run time from 2.5 hours to 4 minutes. Utilizing functional programming principles and TPL data flow for parallelization</li>
-                    <li>Mentored junior engineers</li>
-                </ul>
+        <aside class="sidebar">
+            <div class="profile-image">
+                <img src="https://github.com/harrywhit97.png" alt="Harry Whittaker">
+            </div>
+            
+            <div class="social-links">
+                <a href="https://github.com/harrywhit97" target="_blank" class="social-link">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://linkedin.com/in/harrywhit97" target="_blank" class="social-link">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="mailto:harrywhit97@gmail.com" class="social-link">
+                    <i class="fas fa-envelope"></i>
+                </a>
             </div>
 
-            <div class="employment-item">
-                <h3>Socius Technologies - Software Engineer: July 2020 - February 2021</h3>
-                <ul>
-                    <li>Worked alongside the CTO on an Asset management platform</li>
-                    <li>Created swagger and OData enabled API which sat between what previously was a heavily coupled front/backend to provide data to the UI</li>
-                    <li>Refactored to make the service layer testable and created unit test suite using Moq and Fluent Assertions</li>
-                    <li>Improved Azure Devops CI/CD pipelines by adding a static code analysis tool (Sonar Cloud)</li>
-                </ul>
-            </div>
+            <a href="cv.pdf" download class="download-cv">
+                <i class="fas fa-download"></i> Download CV
+            </a>
 
-            <div class="employment-item">
-                <h3>Brady Plc (hard commodity derivatives software house) - Junior Software Engineer: Oct 2018 - July 2020</h3>
-                <ul>
-                    <li>Created CI/CD pipeline using TeamCity and Octopus Deploy for a reduction of build time by 50%</li>
-                    <li>Took ownership of a MiFID reporting service. Fixed bugs, performed maintenance, expanded unit testing suite</li>
-                </ul>
+            <div class="section" id="skills">
+                <h2>Skills</h2>
+                <div class="skills-list">
+                    <div class="skill-item">.NET Core</div>
+                    <div class="skill-item">Azure Cloud</div>
+                    <div class="skill-item">C#</div>
+                    <div class="skill-item">DevOps</div>
+                    <div class="skill-item">CI/CD</div>
+                    <div class="skill-item">Docker</div>
+                    <div class="skill-item">TDD</div>
+                    <div class="skill-item">Microservices</div>
+                </div>
             </div>
-        </section>
+        </aside>
 
-        <section class="section education">
-            <h2>Education</h2>
-            <div class="education-item">
-                <h3>Currently working towards Azure Certified Solutions Architect</h3>
-                <p>Azure Certified Developer Associate 2021 - present</p>
-            </div>
-            <div class="education-item">
-                <h3>Bachelor of IT Majoring in Computer Science - Queensland University of Technology 2015-2018 (Brisbane, Australia)</h3>
-                <ul>
-                    <li>Major in Computer Science - equivalent grade of 2:1</li>
-                </ul>
-            </div>
-        </section>
+        <main class="main-content">
+            <section class="section" id="about">
+                <h1>Harry Whittaker</h1>
+                <p class="subtitle">Senior Software Engineer</p>
+                <p class="bio">
+                    Senior software engineer with 4.5 years of experience in the financial sector, 
+                    specializing in structured products and hard commodity derivatives. Expert in .NET 
+                    and Azure development with a strong focus on implementing CI/CD, TDD, and BDD to 
+                    optimize development teams' throughput safely and efficiently.
+                </p>
+            </section>
+
+            <section class="section" id="experience">
+                <h2>Experience</h2>
+                <div class="employment-item">
+                    <h3>Senior Software Engineer</h3>
+                    <span class="duration">February 2021 - Present</span>
+                    <p class="company">Socius Technologies</p>
+                    <ul>
+                        <li>Led migration from .NET Framework 5.2 to .NET 7</li>
+                        <li>Improved critical process performance by 97%</li>
+                        <li>Implemented role-based access control</li>
+                        <li>Enhanced CI/CD practices, improving release frequency by 4x</li>
+                    </ul>
+                </div>
+
+                <div class="employment-item">
+                    <h3>Software Engineer</h3>
+                    <span class="duration">July 2020 - February 2021</span>
+                    <p class="company">Socius Technologies</p>
+                    <ul>
+                        <li>Created Swagger and OData-enabled API</li>
+                        <li>Implemented comprehensive testing suite</li>
+                        <li>Enhanced Azure DevOps pipelines</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="section" id="contact">
+                <h2>Contact Me</h2>
+                <form class="contact-form" action="https://formspree.io/f/your-form-id" method="POST">
+                    <div class="form-group">
+                        <label class="form-label" for="name">Name</label>
+                        <input type="text" id="name" name="name" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="email">Email</label>
+                        <input type="email" id="email" name="email" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="message">Message</label>
+                        <textarea id="message" name="message" class="form-input" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </section>
+        </main>
     </div>
+
+    <script>
+        // Navbar hide on scroll
+        let lastScroll = 0;
+        const navbar = document.querySelector('.nav-bar');
+        
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            if (currentScroll > lastScroll && currentScroll > 100) {
+                navbar.classList.add('nav-hidden');
+            } else {
+                navbar.classList.remove('nav-hidden');
+            }
+            lastScroll = currentScroll;
+        });
+
+        // Intersection Observer for scroll animations
+        const sections = document.querySelectorAll('.section');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        sections.forEach(section => observer.observe(section));
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Dynamic skill items
+        document.querySelectorAll('.skill-item').forEach(item => {
+            item.addEventListener('mousemove', (e) => {
+                const rect = item.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                item.style.transform = `
+                    translateX(10px)
+                    perspective(1000px)
+                    rotateY(${(x - rect.width / 2) / 10}deg)
+                    rotateX(${-(y - rect.height / 2) / 10}deg)
+                `;
+            });
+
+            item.addEventListener('mouseleave', () => {
+                item.style.transform = 'translateX(0) perspective(1000px) rotateY(0) rotateX(0)';
+            });
+        });
+
+        // Dark mode toggle
+        const themeToggle = document.querySelector('.theme-toggle');
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+        
+        // Check for saved theme preference or use system preference
+        const currentTheme = localStorage.getItem('theme') || 
+            (prefersDarkScheme.matches ? 'dark' : 'light');
+        
+        if (currentTheme === 'dark') {
+            document.body.setAttribute('data-theme', 'dark');
+            themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+
+        themeToggle.addEventListener('click', () => {
+            const isDark = document.body.getAttribute('data-theme') === 'dark';
+            document.body.setAttribute('data-theme', isDark ? 'light' : 'dark');
+            themeToggle.innerHTML = isDark ? 
+                '<i class="fas fa-moon"></i>' : 
+                '<i class="fas fa-sun"></i>';
+            localStorage.setItem('theme', isDark ? 'light' : 'dark');
+        });
+    </script>
 </body>
 </html>
