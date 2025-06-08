@@ -170,27 +170,11 @@
             border-radius: 12px;
             background: var(--background-color);
             margin-bottom: 0.5rem;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .skill-item::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: var(--gradient);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .skill-item:hover::before {
-            opacity: 1;
-        }
-
-        .skill-item:hover {
-            color: white;
-            transform: translateX(10px);
+            display: inline-block;
+            margin-right: 0.5rem;
+            color: var(--text-color);
+            font-size: 0.9rem;
+            border: 1px solid var(--border-color);
         }
 
         .main-content {
@@ -220,23 +204,33 @@
             overflow: hidden;
         }
 
-        .employment-item::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 4px;
-            height: 0;
-            background: var(--gradient);
-            transition: height 0.3s ease;
+        .company-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
         }
 
-        .employment-item:hover::before {
-            height: 100%;
+        .position-title {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 0.25rem;
         }
 
-        .employment-item:hover {
-            transform: translateX(10px);
+        .date-range {
+            font-size: 0.9rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .employment-item ul {
+            margin-top: 1rem;
+            padding-left: 1.5rem;
+        }
+
+        .employment-item li {
+            margin-bottom: 0.5rem;
         }
 
         @media (max-width: 900px) {
@@ -279,16 +273,21 @@
             </div>
 
             <div class="section" id="skills">
-                <h2>Skills</h2>
+                <h2>Technical Skills</h2>
                 <div class="skills-list">
-                    <div class="skill-item">.NET Core</div>
-                    <div class="skill-item">Azure Cloud</div>
-                    <div class="skill-item">AWS</div>
-                    <div class="skill-item">DevOps</div>
-                    <div class="skill-item">Docker</div>
-                    <div class="skill-item">TDD</div>
-                    <div class="skill-item">Microservices</div>
-                    <div class="skill-item">Functional Programming</div>
+                    <span class="skill-item">.NET</span>
+                    <span class="skill-item">Azure Cloud</span>
+                    <span class="skill-item">AWS</span>
+                    <span class="skill-item">DevOps</span>
+                    <span class="skill-item">Docker</span>
+                    <span class="skill-item">TDD</span>
+                    <span class="skill-item">Microservices</span>
+                    <span class="skill-item">Functional Programming</span>
+                    <span class="skill-item">Domain-Driven Design</span>
+                    <span class="skill-item">Observability</span>
+                    <span class="skill-item">Infrastructure as Code</span>
+                    <span class="skill-item">RESTful APIs</span>
+                    <span class="skill-item">Blue-Green & Canary Deployments</span>
                 </div>
             </div>
         </aside>
@@ -308,9 +307,9 @@
             <section class="section" id="experience">
                 <h2>Experience</h2>
                 <div class="employment-item">
-                    <h3>Software Engineer</h3>
-                    <span class="duration">November 2023 - Present</span>
-                    <p class="company">Checkout.com</p>
+                    <div class="company-name">Checkout.com</div>
+                    <div class="position-title">Software Engineer</div>
+                    <div class="date-range">November 2023 - Present</div>
                     <ul>
                         <li>Led the implementation of critical payment processing features handling transactions worth millions in daily volume</li>
                         <li>Streamlined the continuous deployment pipeline, significantly improving team velocity and deployment efficiency</li>
@@ -322,9 +321,9 @@
                 </div>
 
                 <div class="employment-item">
-                    <h3>Senior Software Engineer</h3>
-                    <span class="duration">February 2021 - November 2023</span>
-                    <p class="company">Socius Technologies</p>
+                    <div class="company-name">Socius Technologies</div>
+                    <div class="position-title">Senior Software Engineer</div>
+                    <div class="date-range">February 2021 - November 2023</div>
                     <ul>
                         <li>Led migration from .NET Framework 5.2 to .NET 7</li>
                         <li>Improved critical process performance by 97%</li>
@@ -334,9 +333,9 @@
                 </div>
 
                 <div class="employment-item">
-                    <h3>Software Engineer</h3>
-                    <span class="duration">July 2020 - February 2021</span>
-                    <p class="company">Socius Technologies</p>
+                    <div class="company-name">Socius Technologies</div>
+                    <div class="position-title">Software Engineer</div>
+                    <div class="date-range">July 2020 - February 2021</div>
                     <ul>
                         <li>Created Swagger and OData-enabled API</li>
                         <li>Implemented comprehensive testing suite</li>
@@ -345,9 +344,9 @@
                 </div>
 
                 <div class="employment-item">
-                    <h3>Junior Software Engineer</h3>
-                    <span class="duration">October 2018 - July 2020</span>
-                    <p class="company">Brady Plc (hard commodity derivatives software house)</p>
+                    <div class="company-name">Brady PLC</div>
+                    <div class="position-title">Junior Software Engineer</div>
+                    <div class="date-range">October 2018 - July 2020</div>
                     <ul>
                         <li>Created CI/CD pipeline using TeamCity and Octopus Deploy for a reduction of build time by 50%</li>
                         <li>Took ownership of a MiFID reporting service. Fixed bugs, performed maintenance, expanded unit testing suite</li>
@@ -413,26 +412,6 @@
                 document.querySelector(this.getAttribute('href')).scrollIntoView({
                     behavior: 'smooth'
                 });
-            });
-        });
-
-        // Dynamic skill items
-        document.querySelectorAll('.skill-item').forEach(item => {
-            item.addEventListener('mousemove', (e) => {
-                const rect = item.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                
-                item.style.transform = `
-                    translateX(10px)
-                    perspective(1000px)
-                    rotateY(${(x - rect.width / 2) / 10}deg)
-                    rotateX(${-(y - rect.height / 2) / 10}deg)
-                `;
-            });
-
-            item.addEventListener('mouseleave', () => {
-                item.style.transform = 'translateX(0) perspective(1000px) rotateY(0) rotateX(0)';
             });
         });
 
